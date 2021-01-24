@@ -4,5 +4,10 @@
       "name": "app.datasource.jdbc-url",
       "type": "java.lang.String",
       "description": "Description for app.datasource.jdbc-url."
-  }
-] }
+    },
+    {
+      "name": "security.basic.enabled",
+      "type": "java.lang.String",
+      "description": "Description for security.basic.enabled."
+    }
+  ] }

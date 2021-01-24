@@ -1,9 +1,9 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.repository.AutorRepository;
-import com.example.demo.service.AutorService;
-import com.example.demo.service.dto.AutorDTO;
-import com.example.demo.service.mapper.AutorMapper;
+import com.example.demo.repository.UzytkownicyRepository;
+import com.example.demo.service.UzytkownicyService;
+import com.example.demo.service.dto.UzytkownicyDTO;
+import com.example.demo.service.mapper.UzytkownicyMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -13,19 +13,19 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class AutorServiceImpl implements AutorService {
+public class UzytkownicyServiceImpl implements UzytkownicyService {
     @Resource
-    private AutorMapper mapper;
+    private UzytkownicyMapper mapper;
     @Resource
-    private AutorRepository repository;
+    private UzytkownicyRepository repository;
 
     @Override
-    public void save(AutorDTO dto) {
+    public void save(UzytkownicyDTO dto) {
         repository.save(mapper.toEntity(dto));
     }
 
     @Override
-    public void save(List<AutorDTO> dtos) {
+    public void save(List<UzytkownicyDTO> dtos) {
         repository.saveAll(mapper.toEntity(dtos));
     }
 
@@ -35,12 +35,17 @@ public class AutorServiceImpl implements AutorService {
     }
 
     @Override
-    public Optional<AutorDTO> findOne(Long id) {
+    public int max() {
+        return (int) repository.max();
+    }
+
+    @Override
+    public Optional<UzytkownicyDTO> findOne(Long id) {
         return Optional.ofNullable(mapper.toDto(repository.findOne(id)));
     }
 
     @Override
-    public List<AutorDTO> findAll() {
+    public List<UzytkownicyDTO> findAll() {
         return mapper.toDto(repository.findAll());
     }
 

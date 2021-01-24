@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.UzytkownicyDao">
+    <resultMap id="resultMap" type="com.example.demo.entitites.UzytkownicyEntity">
+        <result property="idUzytkownika" column="id_uzytkownika"/>
+        <result property="imie" column="imie"/>
+        <result property="nazwisko" column="nazwisko"/>
+    </resultMap>
+    <sql id="columns">
+        select t1.id_uzytkownika, t1.imie, t1.nazwisko
+        from UZYTKOWNICY t1 
+</sql>
+    <select id="query" parameterType="com.example.demo.service.query.UzytkownicyQuery" resultMap="resultMap">
+        <include refid="columns"/>
+    </select>
+    <insert id="batchAdd" parameterType="com.example.demo.service.dto.UzytkownicyDTO">insert into
+        UZYTKOWNICY(id_uzytkownika,imie,nazwisko) values
+        <foreach collection="list" item="item" open="" close="" separator=",">    (#{item.idUzytkownika},#{item.imie},#{item.nazwisko})</foreach
+        ></insert>
+    </mapper>
