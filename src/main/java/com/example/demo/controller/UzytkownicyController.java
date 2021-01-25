@@ -31,7 +31,10 @@ public class UzytkownicyController {
     public List<UzytkownicyDTO> list() {
         return uzytkownicyService.findAll();
     }
-
+    @GetMapping("/max")
+    public int max(){
+        return uzytkownicyService.max();
+    }
     @GetMapping("/uzytkownik/{id}")
     public Optional<UzytkownicyDTO> findOne(@PathVariable("id") Long id) {
         return uzytkownicyService.findOne(id);

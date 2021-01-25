@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.PublikacjeDao">
+    <resultMap id="resultMap" type="com.example.demo.entitites.PublikacjeEntity">
+        <result property="isbn" column="isbn"/>
+        <result property="typ" column="typ"/>
+        <result property="tytul" column="tytul"/>
+        <result property="gatunek" column="gatunek"/>
+        <result property="temat" column="temat"/>
+        <result property="publikacjeByIdCzasopisma" column="publikacje_by_id_czasopisma"/>
+    </resultMap>
+    <sql id="columns">
+        select t1.isbn, t1.typ, t1.tytul, t1.gatunek, t1.temat, t1.publikacje_by_id_czasopisma
+        from PUBLIKACJE t1 
+</sql>
+    <select id="query" parameterType="com.example.demo.service.query.PublikacjeQuery" resultMap="resultMap">
+        <include refid="columns"/>
+    </select>
+    <insert id="batchAdd" parameterType="com.example.demo.service.dto.PublikacjeDTO">insert into
+        PUBLIKACJE(isbn,typ,tytul,gatunek,temat,publikacje_by_id_czasopisma) values
+        <foreach collection="list" item="item" open="" close="" separator=",">    (#{item.isbn},#{item.typ},#{item.tytul},#{item.gatunek},#{item.temat},#{item.publikacjeByIdCzasopisma})</foreach
+        ></insert>
+    </mapper>
