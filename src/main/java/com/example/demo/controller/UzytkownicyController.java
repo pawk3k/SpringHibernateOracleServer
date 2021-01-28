@@ -18,7 +18,6 @@ public class UzytkownicyController {
 
     @PostMapping("/save")
     public void save(@RequestBody UzytkownicyDTO uzytkownicy) {
-
         uzytkownicyService.save(uzytkownicy);
     }
 

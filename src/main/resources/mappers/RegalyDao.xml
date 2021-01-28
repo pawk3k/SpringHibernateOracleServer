@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.RegalyDao">
+    <resultMap id="resultMap" type="com.example.demo.entitites.RegalyEntity">
+        <result property="kodRegalu" column="kod_regalu"/>
+    </resultMap>
+    <sql id="columns">
+        select t1.kod_regalu
+        from REGALY t1 
+</sql>
+    <select id="query" parameterType="com.example.demo.service.query.RegalyQuery" resultMap="resultMap">
+        <include refid="columns"/>
+    </select>
+    <insert id="batchAdd" parameterType="com.example.demo.service.dto.RegalyDTO">insert into REGALY(kod_regalu) values
+        <foreach collection="list" item="item" open="" close="" separator=",">(#{item.kodRegalu})</foreach>
+    </insert>
+</mapper>

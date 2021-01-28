@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.PolkiDao">
+    <resultMap id="resultMap" type="com.example.demo.entitites.PolkiEntity">
+        <result property="nrPolki" column="nr_polki"/>
+        <result property="regalyByKodRegalu" column="regaly_by_kod_regalu"/>
+    </resultMap>
+    <sql id="columns">
+        select t1.nr_polki, t1.regaly_by_kod_regalu
+        from POLKI t1 
+</sql>
+    <select id="query" parameterType="com.example.demo.service.query.PolkiQuery" resultMap="resultMap">
+        <include refid="columns"/>
+    </select>
+    <insert id="batchAdd" parameterType="com.example.demo.service.dto.PolkiDTO">insert into
+        POLKI(nr_polki,regaly_by_kod_regalu) values
+        <foreach collection="list" item="item" open="" close="" separator=",">    (#{item.nrPolki},#{item.regalyByKodRegalu})</foreach
+        ></insert>
+    </mapper>
