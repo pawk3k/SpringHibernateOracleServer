@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.EgzemplarzeDao">
+    <resultMap id="resultMap" type="com.example.demo.entitites.EgzemplarzeEntity">
+        <result property="idEgzemplarza" column="id_egzemplarza"/>
+        <result property="czyWypozyczony" column="czy_wypozyczony"/>
+        <result property="pozycja" column="pozycja"/>
+    </resultMap>
+    <sql id="columns">
+        select t1.id_egzemplarza, t1.czy_wypozyczony, t1.pozycja
+        from EGZEMPLARZE t1 
+</sql>
+    <select id="query" parameterType="com.example.demo.service.query.EgzemplarzeQuery" resultMap="resultMap">
+        <include refid="columns"/>
+    </select>
+    <insert id="batchAdd" parameterType="com.example.demo.service.dto.EgzemplarzeDTO">insert into
+        EGZEMPLARZE(id_egzemplarza,czy_wypozyczony,pozycja) values
+        <foreach collection="list" item="item" open="" close="" separator=",">    (#{item.idEgzemplarza},#{item.czyWypozyczony},#{item.pozycja})</foreach
+        ></insert>
+    </mapper>
