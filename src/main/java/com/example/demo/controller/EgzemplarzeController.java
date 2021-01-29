@@ -2,6 +2,8 @@ package com.example.demo.controller;
 
 import com.example.demo.service.EgzemplarzeService;
 import com.example.demo.service.dto.EgzemplarzeDTO;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -19,8 +21,17 @@ public class EgzemplarzeController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable("id") Long id) {
-        egzemplarzeService.delete(id);
+    public ResponseEntity<String> delete(@PathVariable("id") Long id) {
+
+
+        try {
+            egzemplarzeService.delete(id);
+        } catch (Exception ex) {
+            return ResponseEntity
+                    .status(HttpStatus.FORBIDDEN)
+                    .body("Nie ma egzemplarzu o podanym id");
+        }
+        return ResponseEntity.ok().body("ok");
     }
 
     @GetMapping("/list")

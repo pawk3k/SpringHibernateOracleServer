@@ -1,6 +1,7 @@
 package com.example.demo.entitites;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 
@@ -9,6 +10,7 @@ public class UzytkownicyEntity {
     private long idUzytkownika;
     private String imie;
     private String nazwisko;
+    private Collection<WypozyczeniaEntity> wypozyczeniasByIdUzytkownika;
 
     @Id
     @SequenceGenerator(name = "mySeqGen", sequenceName = "uzytkownicy_seq", initialValue = 5, allocationSize = 50)
@@ -62,5 +64,14 @@ public class UzytkownicyEntity {
         result = 31 * result + (imie != null ? imie.hashCode() : 0);
         result = 31 * result + (nazwisko != null ? nazwisko.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "uzytkownicyByIdUzytkownika")
+    public Collection<WypozyczeniaEntity> getWypozyczeniasByIdUzytkownika() {
+        return wypozyczeniasByIdUzytkownika;
+    }
+
+    public void setWypozyczeniasByIdUzytkownika(Collection<WypozyczeniaEntity> wypozyczeniasByIdUzytkownika) {
+        this.wypozyczeniasByIdUzytkownika = wypozyczeniasByIdUzytkownika;
     }
 }

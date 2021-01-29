@@ -31,7 +31,7 @@ public class UzytkownicyServiceImpl implements UzytkownicyService {
 
     @Override
     public void delete(Long id) {
-        repository.deleteById(id);
+        repository.deleteByIdUzytkownika(id);
     }
 
     @Override
@@ -43,7 +43,9 @@ public class UzytkownicyServiceImpl implements UzytkownicyService {
     public Optional<UzytkownicyDTO> findOne(Long id) {
         return Optional.ofNullable(mapper.toDto(repository.findOne(id)));
     }
-
+    public List<Object> getAllByIdU(Long id){
+        return repository.getAllByIdUzytkownika(id);
+    }
     @Override
     public List<UzytkownicyDTO> findAll() {
         return mapper.toDto(repository.findAll());

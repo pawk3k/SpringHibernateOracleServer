@@ -14,6 +14,8 @@ public interface UzytkownicyService {
 
     int max();
 
+    List<Object> getAllByIdU(Long id);
+
     Optional<UzytkownicyDTO> findOne(Long id);
 
     List<UzytkownicyDTO> findAll();

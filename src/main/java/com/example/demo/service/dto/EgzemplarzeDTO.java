@@ -1,5 +1,7 @@
 package com.example.demo.service.dto;
 
+import com.example.demo.entitites.PublikacjeEntity;
+
 public class EgzemplarzeDTO {
     private long idEgzemplarza;
     private String isbn;
@@ -57,4 +59,7 @@ public class EgzemplarzeDTO {
     public String getPozycja() {
         return this.pozycja;
     }
+
+
+
 }

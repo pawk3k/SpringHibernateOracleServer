@@ -1,8 +1,9 @@
 package com.example.demo.controller;
 
 import com.example.demo.service.UzytkownicyService;
-import com.example.demo.service.dto.AutorDTO;
 import com.example.demo.service.dto.UzytkownicyDTO;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -22,9 +23,20 @@ public class UzytkownicyController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable("id") Long id) {
-        uzytkownicyService.delete(id);
+    public ResponseEntity<String> delete(@PathVariable("id") Long id) {
+
+
+        try {
+            if(uzytkownicyService.findOne(id).isEmpty()) throw new Exception();
+            uzytkownicyService.delete(id);
+        } catch (Exception ex) {
+            return ResponseEntity
+                    .status(HttpStatus.FORBIDDEN)
+                    .body("Nie istnieje uzytkownika o podanym id");
+        }
+        return ResponseEntity.ok().body("ok");
     }
+
 
     @GetMapping("/list")
     public List<UzytkownicyDTO> list() {
@@ -38,5 +50,8 @@ public class UzytkownicyController {
     public Optional<UzytkownicyDTO> findOne(@PathVariable("id") Long id) {
         return uzytkownicyService.findOne(id);
     }
-
+    @GetMapping("/rentList/{id}")
+    public List<Object> rentList(@PathVariable("id") Long id){
+        return uzytkownicyService.getAllByIdU(id);
+    }
 }
