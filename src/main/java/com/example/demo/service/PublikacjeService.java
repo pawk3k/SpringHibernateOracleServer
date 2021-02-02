@@ -19,4 +19,5 @@ public interface PublikacjeService {
 
     List<PublikacjeDTO> findAllLikeM(String isbn);
     List<PublikacjeDTO> findAllLike(String isbn);
+    List<PublikacjeDTO> findAllTytul(String tytul);
 }

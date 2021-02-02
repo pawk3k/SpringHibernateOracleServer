@@ -63,6 +63,9 @@ public class PublikacjeServiceImpl implements PublikacjeService {
         return mapper.toDto(repository.findByIsbnStartsWith(isbn));
     }
 
+
+    @Override
+    public List<PublikacjeDTO> findAllTytul(String tytul){return  mapper.toDto(repository.findByTytulStartingWith(tytul));}
     @Override
     public List<PublikacjeDTO> findAllLikeM(String isbn) {
         return mapper.toDto(repository.findByTytulStartingWithOrGatunekStartingWithOrTematStartingWith(isbn, isbn, isbn));

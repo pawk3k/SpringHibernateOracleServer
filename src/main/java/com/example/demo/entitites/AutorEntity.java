@@ -13,7 +13,7 @@ public class AutorEntity {
     private String tytulNaukowy;
 
     @Id
-    @Column(name = "ID_AUTORA")
+    @Column(name = "ID_AUTORA", nullable = false, precision = 0)
     public long getIdAutora() {
         return idAutora;
     }
@@ -23,7 +23,7 @@ public class AutorEntity {
     }
 
     @Basic
-    @Column(name = "NAZWISKO")
+    @Column(name = "NAZWISKO", nullable = false, length = 50)
     public String getNazwisko() {
         return nazwisko;
     }
@@ -33,7 +33,7 @@ public class AutorEntity {
     }
 
     @Basic
-    @Column(name = "IMIE")
+    @Column(name = "IMIE", nullable = true, length = 50)
     public String getImie() {
         return imie;
     }
@@ -43,7 +43,7 @@ public class AutorEntity {
     }
 
     @Basic
-    @Column(name = "TYTUL_NAUKOWY")
+    @Column(name = "TYTUL_NAUKOWY", nullable = true, length = 50)
     public String getTytulNaukowy() {
         return tytulNaukowy;
     }

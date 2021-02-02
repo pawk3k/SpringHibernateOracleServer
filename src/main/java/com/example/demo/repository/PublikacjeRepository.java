@@ -16,6 +16,10 @@ public interface PublikacjeRepository extends BaseRepository<PublikacjeEntity> {
 
     List<PublikacjeEntity> findByIsbnStartsWith(String isbn);
 
+    List<PublikacjeEntity> findByTytulStartingWith(String isbn);
+
+    List<PublikacjeEntity> findAllByTytulLike(String  tytul);
+
     List<PublikacjeEntity> findByTytulStartingWithOrGatunekStartingWithOrTematStartingWith(String tytul, String gatunek, String temat);
 
 

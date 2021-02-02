@@ -34,9 +34,13 @@ public class PublikacjeController {
         return publikacjeService.findAllLike(id);
     }
 
-    @GetMapping("/list/{id}")
-    public List<PublikacjeDTO> listLike(@PathVariable("id") Long id) {
-        return publikacjeService.findAllLike(id + "");
+//    @GetMapping("/list/{id}")
+//    public List<PublikacjeDTO> listLike(@PathVariable("id") Long id) {
+//        return publikacjeService.findAllLike(id + "");
+//    }
+    @GetMapping("/list/{tytul}")
+    public List<PublikacjeDTO> listLike(@PathVariable("tytul") String tytul) {
+        return publikacjeService.findAllTytul(tytul);
     }
 
     @GetMapping("/rent/{isbn}/{id_e}/{id_u}")
