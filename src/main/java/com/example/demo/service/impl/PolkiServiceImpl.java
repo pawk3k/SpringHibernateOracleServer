@@ -25,10 +25,10 @@ public class PolkiServiceImpl implements PolkiService {
     private PolkiRepository repository;
 
 
-    @Override
-    public List<PolkiDTO> findByKod(RegalyDTO dto){
-        return mapper.toDto(repository.findAllByRegalyByKodRegalu(regalyMapper.toEntity(dto)));
-    }
+//    @Override
+//    public List<PolkiDTO> findByKod(RegalyDTO dto){
+//        return mapper.toDto(repository.findAllByRegalyByKodRegalu(regalyMapper.toEntity(dto)));
+//    }
 
     @Override
     public void save(PolkiDTO dto) {
@@ -51,9 +51,14 @@ public class PolkiServiceImpl implements PolkiService {
 //    }
 
     @Override
+    public List<PolkiDTO> findAllByKod(String kod) {
+        return mapper.toDto(repository.findAllByKodRegalu(kod));
+    }
+    @Override
     public List<PolkiDTO> findAll() {
         return mapper.toDto(repository.findAll());
     }
+
 
 
 }

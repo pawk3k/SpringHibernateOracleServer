@@ -19,7 +19,7 @@ public class RegalyController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable("id") Long id) {
+    public void delete(@PathVariable("id") String id) {
         regalyService.delete(id);
     }
     @GetMapping("/list")

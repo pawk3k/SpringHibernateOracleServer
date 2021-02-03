@@ -1,16 +1,15 @@
 package com.example.demo.entitites;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Id;
+import java.io.Serializable;
 
-@Entity
-@Table(name = "POLKI", schema = "INF135412", catalog = "")
-@IdClass(PolkiEntityPK.class)
-public class PolkiEntity {
+public class PolkiEntityPK implements Serializable {
     private byte nrPolki;
     private String kodRegalu;
 
-    @Id
     @Column(name = "NR_POLKI", nullable = false, precision = 0)
+    @Id
     public byte getNrPolki() {
         return nrPolki;
     }
@@ -19,8 +18,8 @@ public class PolkiEntity {
         this.nrPolki = nrPolki;
     }
 
-    @Id
     @Column(name = "KOD_REGALU", nullable = false, length = 3)
+    @Id
     public String getKodRegalu() {
         return kodRegalu;
     }
@@ -34,7 +33,7 @@ public class PolkiEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        PolkiEntity that = (PolkiEntity) o;
+        PolkiEntityPK that = (PolkiEntityPK) o;
 
         if (nrPolki != that.nrPolki) return false;
         if (kodRegalu != null ? !kodRegalu.equals(that.kodRegalu) : that.kodRegalu != null) return false;

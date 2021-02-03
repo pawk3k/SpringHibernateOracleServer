@@ -10,7 +10,7 @@ public interface RegalyService {
 
     void save(List<RegalyDTO> dtos);
 
-    void delete(Long id);
+    void delete(String nrRegalu);
 
     List<RegalyDTO> findAll();
 

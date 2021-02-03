@@ -1,10 +1,8 @@
 package com.example.demo.service.dto;
 
-import com.example.demo.entitites.RegalyEntity;
-
 public class PolkiDTO {
     private byte nrPolki;
-    private RegalyEntity regalyByKodRegalu;
+    private String kodRegalu;
 
     public PolkiDTO nrPolki(byte nrPolki) {
         this.nrPolki = nrPolki;
@@ -19,16 +17,16 @@ public class PolkiDTO {
         return this.nrPolki;
     }
 
-    public PolkiDTO regalyByKodRegalu(RegalyEntity regalyByKodRegalu) {
-        this.regalyByKodRegalu = regalyByKodRegalu;
+    public PolkiDTO kodRegalu(String kodRegalu) {
+        this.kodRegalu = kodRegalu;
         return this;
     }
 
-    public void setRegalyByKodRegalu(RegalyEntity regalyByKodRegalu) {
-        this.regalyByKodRegalu = regalyByKodRegalu;
+    public void setKodRegalu(String kodRegalu) {
+        this.kodRegalu = kodRegalu;
     }
 
-    public RegalyEntity getRegalyByKodRegalu() {
-        return this.regalyByKodRegalu;
+    public String getKodRegalu() {
+        return this.kodRegalu;
     }
 }

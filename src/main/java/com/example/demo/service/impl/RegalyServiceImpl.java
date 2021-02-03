@@ -31,8 +31,8 @@ public class RegalyServiceImpl implements RegalyService {
     }
 
     @Override
-    public void delete(Long id) {
-        repository.deleteById(id);
+    public void delete(String nrRegalu) {
+        repository.deleteByKodRegalu(nrRegalu);
     }
 
     @Override

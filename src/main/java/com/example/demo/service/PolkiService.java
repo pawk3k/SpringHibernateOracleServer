@@ -15,7 +15,9 @@ public interface PolkiService {
 
 //    Optional<PolkiDTO> findOne(Long id);
 
-    List<PolkiDTO> findByKod(RegalyDTO regalyDTO);
+//    List<PolkiDTO> findByKod(RegalyDTO regalyDTO);
     List<PolkiDTO> findAll();
+    List<PolkiDTO> findAllByKod(String kod);
+
 
 }
