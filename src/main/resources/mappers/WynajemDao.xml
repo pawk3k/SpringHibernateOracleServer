@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.WynajemDao">
+    <resultMap id="resultMap" type="com.example.demo.entitites.WynajemEntity">
+        <result property="data" column="data"/>
+        <result property="godzRozpoczecia" column="godz_rozpoczecia"/>
+        <result property="deadline" column="deadline"/>
+        <result property="godzZakonczenia" column="godz_zakonczenia"/>
+        <result property="idUzytkownika" column="id_uzytkownika"/>
+        <result property="idSali" column="id_sali"/>
+    </resultMap>
+    <sql id="columns">
+        select t1.data, t1.godz_rozpoczecia, t1.deadline, t1.godz_zakonczenia, t1.id_uzytkownika, t1.id_sali
+        from WYNAJEM t1 
+</sql>
+    <select id="query" parameterType="com.example.demo.service.query.WynajemQuery" resultMap="resultMap">
+        <include refid="columns"/>
+    </select>
+    <insert id="batchAdd" parameterType="com.example.demo.service.dto.WynajemDTO">insert into
+        WYNAJEM(data,godz_rozpoczecia,deadline,godz_zakonczenia,id_uzytkownika,id_sali) values
+        <foreach collection="list" item="item" open="" close="" separator=",">    (#{item.data},#{item.godzRozpoczecia},#{item.deadline},#{item.godzZakonczenia},#{item.idUzytkownika},#{item.idSali})</foreach
+        ></insert>
+    </mapper>

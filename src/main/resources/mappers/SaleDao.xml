@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.SaleDao">
+    <resultMap id="resultMap" type="com.example.demo.entitites.SaleEntity">
+        <result property="idSali" column="id_sali"/>
+        <result property="liczbaMiejsc" column="liczba_miejsc"/>
+        <result property="jestTablica" column="jest_tablica"/>
+    </resultMap>
+    <sql id="columns">
+        select t1.id_sali, t1.liczba_miejsc, t1.jest_tablica
+        from SALE t1 
+</sql>
+    <select id="query" parameterType="com.example.demo.service.query.SaleQuery" resultMap="resultMap">
+        <include refid="columns"/>
+    </select>
+    <insert id="batchAdd" parameterType="com.example.demo.service.dto.SaleDTO">insert into
+        SALE(id_sali,liczba_miejsc,jest_tablica) values
+        <foreach collection="list" item="item" open="" close="" separator=",">    (#{item.idSali},#{item.liczbaMiejsc},#{item.jestTablica})</foreach
+        ></insert>
+    </mapper>

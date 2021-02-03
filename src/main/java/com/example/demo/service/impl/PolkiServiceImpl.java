@@ -52,13 +52,17 @@ public class PolkiServiceImpl implements PolkiService {
 
     @Override
     public List<PolkiDTO> findAllByKod(String kod) {
-        return mapper.toDto(repository.findAllByKodRegalu(kod));
+        return mapper.toDto(repository.findAllByKodRegaluEquals(kod));
     }
+
     @Override
     public List<PolkiDTO> findAll() {
         return mapper.toDto(repository.findAll());
     }
 
 
-
+    @Override
+    public void delteByS(PolkiDTO dto) {
+        repository.delete(mapper.toEntity(dto));
+    }
 }

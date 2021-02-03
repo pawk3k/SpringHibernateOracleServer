@@ -18,6 +18,11 @@ public class PolkiController {
         polkiService.save(polki);
     }
 
+    @PostMapping("/delete")
+    public void deleteByDTO(@RequestBody PolkiDTO polki) {
+        polkiService.delteByS(polki);
+    }
+
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable("id") Long id) {
         polkiService.delete(id);
@@ -28,8 +33,8 @@ public class PolkiController {
         return polkiService.findAll();
     }
 
-    @GetMapping("/list/{id}")
-    public void listByKod(@PathVariable("id") String id) {
-        polkiService.findAllByKod(id);
+    @GetMapping("/list/{kodRegalu}")
+    public void listByKod(@PathVariable("kodRegalu") String kodRegalu) {
+        polkiService.findAllByKod(kodRegalu);
     }
 }

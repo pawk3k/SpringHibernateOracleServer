@@ -13,11 +13,14 @@ public interface PolkiService {
 
     void delete(Long id);
 
+    void delteByS(PolkiDTO dto) ;
+//    void delteByS(String kodRegalu,String nrPolki);
 //    Optional<PolkiDTO> findOne(Long id);
 
 //    List<PolkiDTO> findByKod(RegalyDTO regalyDTO);
     List<PolkiDTO> findAll();
     List<PolkiDTO> findAllByKod(String kod);
+
 
 
 }
